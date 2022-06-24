@@ -14,6 +14,6 @@ Esta app permite anotar, editar y elminiar tareas y sus estados.
 
 En esta refactorización utilicé el módulo readline para crear un cli que funcione como asistente en la consola y de esa manera tener una mejor UX al usar esta app muy básica. Al mismo tiempo aproveché esta oportunidad para darme el gusto de utilizar los comandos async y await de javaScript para escribir un código no bloqueante al leer y escribir la información del disco de la PC.
 
-This is a refactor of one of the first mini challenges that we made in the full Stack web development course with node.js in Digital House academy. The main goal of this challenge was to create a super simple note app that matches the requisites of a CRUD type app (create, read, update, delete). Originaly the commands was passed by arguments when we execute this program.
+This is a refactor of one of the first mini challenges we made in the full Stack web development course with node.js in Digital House academy. The main goal of this challenge was to create a super simple note app that matches the requisites of a CRUD type app (create, read, update, delete). Originaly the commands was passed by arguments when we execute this program.
 
 In this refactor I used the readline module to make a CLI and enhance the user experience of this super simple app. At the same time i took this oportunity to write the functions of this program in a non blocking way using javaScript  "async" and "await" methods.
