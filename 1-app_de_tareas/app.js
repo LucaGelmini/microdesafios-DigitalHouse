@@ -1,20 +1,8 @@
 const { argv } = require('process');
 const readline = require('readline')
 const tareas = require('./utils/funcionesDeTareas')
-const {availableOptionsTemplate, actionRequired, unrecognisedCommand} = require('./utils/tareasIO')
+const {availableOptionsTemplate, actionRequired, unrecognisedCommand} = require('./utils/cLogTemplates')
 
-// function isPromise(p) {
-//     if (
-//       p !== null &&
-//       typeof p === 'object' &&
-//       typeof p.then === 'function' &&
-//       typeof p.catch === 'function'
-//     ) {
-//       return true;
-//     }
-  
-//     return false;
-//   }
 
 async function mainSwitch(data, action, rl){
     switch (action){
@@ -24,13 +12,13 @@ async function mainSwitch(data, action, rl){
             console.clear();
             console.log(availableOptionsTemplate());
             rl.close();
-            cli();
+            cli(data);
             break;
         case 'listar':
             tareas.listAllTasks(data)
             .then(()=>{
                 rl.close();
-                cli();
+                cli(data);
             })
         case 'nueva':
             rl.question('Inserte el nombre de la tarea: ', action1 =>{
@@ -42,7 +30,7 @@ async function mainSwitch(data, action, rl){
                     console.log('\n')
                     console.clear();
                     rl.close();
-                    cli();
+                    cli(data);
                 })
             })
             break;
@@ -50,7 +38,7 @@ async function mainSwitch(data, action, rl){
             tareas.save(data);
             console.clear();
             rl.close();
-            cli();
+            cli(data);
             break;
         case 'buscar':
             const busqueda = () =>{
@@ -63,7 +51,7 @@ async function mainSwitch(data, action, rl){
                         }else{
                             console.clear();
                             rl.close();
-                            cli();
+                            cli(data);
                         }
                     })
                 })
@@ -78,7 +66,7 @@ async function mainSwitch(data, action, rl){
                         data = tareas.patch(data, target, action);
                         console.clear();
                         rl.close();
-                        cli();
+                        cli(data);
                     })
                     
                 })
@@ -91,8 +79,9 @@ async function mainSwitch(data, action, rl){
                     const target = await tareas.search(data, action5);
                     data = tareas.delete(data, target);
                     // console.clear();
+                    // console.log('adentro', await data)
                     rl.close();
-                    cli();
+                    cli(data);
                 })
             }
             busquedaEliminar()
@@ -104,12 +93,12 @@ async function mainSwitch(data, action, rl){
             console.clear();
             unrecognisedCommand();
             rl.close();
-            cli();
+            cli(data);
     }
-    console.log('afuera', await data)
+    // console.log('afuera', await data)
     return data
 }
-function cli(){
+function cli(data){
     const rl =readline.createInterface({
         input: process.stdin,
         output: process.stdout,
@@ -129,5 +118,5 @@ function cli(){
 
 console.clear();
 let data = tareas.read()
- cli()
+cli(data)
 

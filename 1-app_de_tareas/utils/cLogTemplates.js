@@ -1,5 +1,5 @@
-const tareasIO = {
-    availableOptions: ['listar', 'nueva', 'salir'],
+const cLogTemplates = {
+    availableOptions: ['ayuda','nueva','guardar','buscar','editar','eliminar','salir'],
     availableOptionsTemplate(){
         let availableOptions = tareasIO.availableOptions
         let templateActions = availableOptions.reduce((prev, next)=>{
@@ -20,4 +20,4 @@ const tareasIO = {
     }
 }
 
-module.exports = tareasIO;
+module.exports = cLogTemplates;
