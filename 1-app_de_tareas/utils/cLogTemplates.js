@@ -1,7 +1,7 @@
 const cLogTemplates = {
     availableOptions: ['ayuda','nueva','guardar','buscar','editar','eliminar','salir'],
     availableOptionsTemplate(){
-        let availableOptions = tareasIO.availableOptions
+        let availableOptions = cLogTemplates.availableOptions
         let templateActions = availableOptions.reduce((prev, next)=>{
             return `${prev}, ${next}`
         })
@@ -11,12 +11,12 @@ const cLogTemplates = {
     },
     actionRequired(){
         console.log(
-            'Atención - Tienes que pasar una acción.\n'+tareasIO.availableOptionsTemplate()
+            'Atención - Tienes que pasar una acción.\n'+cLogTemplates.availableOptionsTemplate()
         )
     },
     unrecognisedCommand(){
 
-        console.log('No entiendo qué quieres hacer.\n'+tareasIO.availableOptionsTemplate())
+        console.log('No entiendo qué quieres hacer.\n'+cLogTemplates.availableOptionsTemplate())
     }
 }
 
